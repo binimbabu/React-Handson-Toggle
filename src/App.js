@@ -1,25 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
 
 function App() {
+  var [show, setShow] = useState(false);
+  function toggle() {
+    setShow((togg) => !togg);
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={{ textAlign: "center" }}>
+      <button onClick={toggle}>{show ? "Hide" : "Show"}</button>
+      {show && <Child />}
     </div>
   );
 }
-
+export function Child() {
+  return <h1>Child Component</h1>;
+}
 export default App;
